@@ -1,6 +1,7 @@
 package ua.ll7.slot21.spc.service;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class F2ServiceImplIT extends Assert {
 			.hasSize(22);
 	}
 
+	@Ignore
 	@Test
 	public void testGetAllAsCSV() throws Exception {
 		String f2AllAsString = f2Service.getAllAsCSV();
