@@ -25,7 +25,7 @@ public class SpCControllerIT {
 			.get(stringToGet)
 		.then()
 			.statusCode(isOneOf(200, 201))
-			.body("response.data", equalTo("5"))
+			.body("methodResponse.data", equalTo("5"))
 		;
 	}
 
@@ -43,7 +43,7 @@ public class SpCControllerIT {
 			.post(stringToPost)
 		.then()
 			.statusCode(isOneOf(200, 201))
-			.body("response.data", equalTo("0"))
+			.body("methodResponse.data", equalTo("0"))
 		;
 
 	}
