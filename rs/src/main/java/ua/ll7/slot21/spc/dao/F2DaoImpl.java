@@ -5,6 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import ua.ll7.slot21.spc.model.F2;
 
 import java.util.List;
@@ -20,18 +22,21 @@ public class F2DaoImpl implements IF2Dao {
 	private SessionFactory sessionFactory;
 
 	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
 	public void create(F2 data) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(data);
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
 	public void update(F2 data) {
 		Session session = sessionFactory.getCurrentSession();
 		session.update(data);
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
 	public List<F2> getAll() {
 		List<F2> result = null;
 		Session session = sessionFactory.getCurrentSession();

@@ -5,6 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import ua.ll7.slot21.spc.model.F1;
 
 import java.util.List;
@@ -20,12 +22,14 @@ public class F1DaoImpl implements IF1Dao {
 	private SessionFactory sessionFactory;
 
 	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
 	public void create(F1 data) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(data);
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
 	public List<F1> getAll() {
 		List<F1> result = null;
 		Session session = sessionFactory.getCurrentSession();

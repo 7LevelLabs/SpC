@@ -3,10 +3,10 @@ package ua.ll7.slot21.spc.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ua.ll7.slot21.spc.dao.IF2Dao;
-import ua.ll7.slot21.spc.model.F1;
 import ua.ll7.slot21.spc.model.F2;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
  *         03.06.14 : 15:14
  */
 @Service
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
 public class F2ServiceImpl implements IF2Service {
 
 	@Autowired
@@ -47,7 +47,7 @@ public class F2ServiceImpl implements IF2Service {
 
 	@Override
 	public boolean exist(long id) {
-		return findById(id)!=null;
+		return findById(id) != null;
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class F2ServiceImpl implements IF2Service {
 
 		StringBuilder sb = new StringBuilder();
 
-		for (int i = 0; i < f2All.size()-1; i++) {
+		for (int i = 0; i < f2All.size() - 1; i++) {
 			F2 f2 = f2All.get(i);
 
 			sb
@@ -72,7 +72,7 @@ public class F2ServiceImpl implements IF2Service {
 				.append(delimiter);
 		}
 
-		sb.append(f2All.get(f2All.size()-1).getValue());
+		sb.append(f2All.get(f2All.size() - 1).getValue());
 
 		return sb.toString();
 	}
