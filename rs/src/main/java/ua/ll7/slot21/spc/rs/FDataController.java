@@ -37,12 +37,7 @@ public class FDataController {
 		int arg
 	) {
 
-		if (arg != 1) {
-			LOGGER.warn("Inappropriate arg : " + arg);
-			return new ResponseEntity<FResponse>(HttpStatus.NOT_ACCEPTABLE);
-		}
-
-		if (arg != 2) {
+		if ((arg != 1L) && (arg != 2L)) {
 			LOGGER.warn("Inappropriate arg : " + arg);
 			return new ResponseEntity<FResponse>(HttpStatus.NOT_ACCEPTABLE);
 		}
