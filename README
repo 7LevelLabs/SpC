@@ -15,6 +15,6 @@
    - в запросе: Method2Request
 - дополнительно реализован - экспорт данных F2:
    - /spc/export/f2, GET
-- тестирование: функциональное, интеграционное (JUnit, AssertJ, rest-assured)
+- тестирование: функциональное, интеграционное (JUnit, AssertJ, rest-assured, Jetty, maven-jetty-plugin)
 
 Репозиторий: https://github.com/7LevelLabs/SpC
