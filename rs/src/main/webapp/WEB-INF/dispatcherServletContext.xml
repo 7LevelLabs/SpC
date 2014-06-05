@@ -33,6 +33,7 @@
             <beans:list>
                 <beans:value>ua.ll7.slot21.spc.util.response.MethodResponse</beans:value>
                 <beans:value>ua.ll7.slot21.spc.util.request.Method2Request</beans:value>
+                <beans:value>ua.ll7.slot21.spc.util.response.FResponse</beans:value>
             </beans:list>
         </beans:property>
 
