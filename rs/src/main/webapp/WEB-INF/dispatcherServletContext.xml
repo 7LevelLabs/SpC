@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <annotation-driven/>
+
+    <beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <beans:property name="messageConverters">
+            <beans:list>
+                <beans:ref bean="xmlMessageConverter"/>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+
+    <beans:bean id="xmlMessageConverter"
+                class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+
+        <beans:constructor-arg ref="jaxbMarshaller"/>
+
+        <beans:property name="supportedMediaTypes" value="application/xml"/>
+
+    </beans:bean>
+
+    <beans:bean id="jaxbMarshaller"
+                class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+
+        <beans:property name="classesToBeBound">
+            <beans:list>
+                <beans:value>ua.ll7.slot21.spc.util.response.MethodResponse</beans:value>
+                <beans:value>ua.ll7.slot21.spc.util.request.Method2Request</beans:value>
+            </beans:list>
+        </beans:property>
+
+    </beans:bean>
+
+    <context:component-scan base-package="ua.ll7.slot21.spc.rs"/>
+    <context:component-scan base-package="ua.ll7.slot21.spc.exception.resolver"/>
+
+</beans:beans>

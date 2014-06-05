@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/jdbc
+       http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:property-placeholder location="/WEB-INF/test.runtime.properties"/>
+
+
+    <context:annotation-config/>
+
+    <context:component-scan base-package="ua.ll7.slot21.spc.dao"/>
+    <context:component-scan base-package="ua.ll7.slot21.spc.service"/>
+    <context:component-scan base-package="ua.ll7.slot21.spc.util"/>
+
+    <!--H2 database-->
+    <jdbc:embedded-database id="dataSource" type="H2">
+
+    </jdbc:embedded-database>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.use_sql_comments">false</prop>
+                <prop key="hibernate.format_sql">false</prop>
+            </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>ua.ll7.slot21.spc.model.F1</value>
+                <value>ua.ll7.slot21.spc.model.F2</value>
+            </list>
+        </property>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+</beans>
