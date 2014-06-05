@@ -16,5 +16,8 @@
 - дополнительно реализован - экспорт данных F2:
    - /spc/export/f2, GET
 - тестирование: функциональное, интеграционное (JUnit, AssertJ, rest-assured, Jetty, maven-jetty-plugin)
+- сборка и прогон интерграционных тестов:
+
+~/: mvn clean package verify -P integration-test
 
 Репозиторий: https://github.com/7LevelLabs/SpC
