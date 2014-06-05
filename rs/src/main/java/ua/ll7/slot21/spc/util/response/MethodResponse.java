@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Alex Velichko
  *         04.06.14 : 20:41
  */
-@XmlRootElement(name="response")
+@XmlRootElement(name = "methodResponse")
 public class MethodResponse {
 	private long data;
 
