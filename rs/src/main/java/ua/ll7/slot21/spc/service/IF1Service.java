@@ -12,8 +12,13 @@ import java.util.List;
 @Service
 public interface IF1Service {
 	public void create(F1 data);
+
 	public List<F1> getAll();
+
 	public F1 findById(long id);
 
 	public void createAll(List<Long> fData);
+
+	public String getAllAsCSV();
+
 }
