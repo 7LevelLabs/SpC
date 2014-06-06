@@ -1,5 +1,9 @@
 package ua.ll7.slot21.spc.rs;
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiResponse;
+import com.wordnik.swagger.annotations.ApiResponses;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ua.ll7.slot21.spc.service.IBLService;
 import ua.ll7.slot21.spc.service.IF2Service;
-import ua.ll7.slot21.spc.util.response.MethodResponse;
 import ua.ll7.slot21.spc.util.request.Method2Request;
+import ua.ll7.slot21.spc.util.response.MethodResponse;
 
 /**
  * @author Alex Velichko
@@ -25,6 +29,7 @@ import ua.ll7.slot21.spc.util.request.Method2Request;
  */
 @Controller
 @RequestMapping("/spc")
+@Api(value = "/spc", description = "Main operations")
 public class SpCController {
 
 	private static final Logger logger = Logger.getLogger(SpCController.class);
@@ -43,6 +48,11 @@ public class SpCController {
 	@RequestMapping(value = "/method1/{v1}",
 		method = RequestMethod.GET,
 		produces = MediaType.APPLICATION_XML_VALUE)
+	@ApiOperation(value = "Method1", response = MethodResponse.class)
+	@ApiResponses({
+		@ApiResponse(code = 404, message = "F2[arg] not found"),
+		@ApiResponse(code = 406, message = "Non acceptable argument")
+	})
 	public ResponseEntity<MethodResponse> method1(
 		@PathVariable("v1")
 		long v1

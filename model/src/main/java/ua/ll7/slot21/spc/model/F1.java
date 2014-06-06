@@ -1,5 +1,7 @@
 package ua.ll7.slot21.spc.model;
 
+import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
@@ -17,6 +19,7 @@ import java.io.Serializable;
  * F1[x]
  */
 @Entity
+@ApiModel(value = "F1 data", description = "F1[x] data")
 public class F1 implements Serializable {
 
 	@Id
@@ -27,6 +30,7 @@ public class F1 implements Serializable {
 	}
 
 	@Column
+	@ApiModelProperty(value = "Payload", required = true)
 	public long getValue() {
 		return value;
 	}
