@@ -14,7 +14,7 @@ import java.util.List;
 public abstract class ADao<T extends Serializable> {
 
 	@Autowired
-	private SessionFactory sessionFactory;
+	SessionFactory sessionFactory;
 
 	private Class<T> clazz;
 
@@ -33,6 +33,8 @@ public abstract class ADao<T extends Serializable> {
 	public void update(T data) {
 		getCurrentSession().update(data);
 	}
+
+	// ===
 
 	public final void setClazz(Class<T> clazzToSet) {
 		this.clazz = clazzToSet;

@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ua.ll7.slot21.spc.dao.IF2Dao;
+import ua.ll7.slot21.spc.dao.impl.F2DaoImpl;
 import ua.ll7.slot21.spc.model.F2;
 
 import java.util.List;
@@ -19,8 +20,13 @@ import java.util.List;
 @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
 public class F2ServiceImpl implements IF2Service {
 
-	@Autowired
 	private IF2Dao f2Dao;
+
+	@Autowired
+	public void setF2Dao(F2DaoImpl daoToSet) {
+		f2Dao = daoToSet;
+		daoToSet.setClazz(F2.class);
+	}
 
 	@Value("${files.delimiter}")
 	private String delimiter;
