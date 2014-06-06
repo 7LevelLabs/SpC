@@ -1,4 +1,4 @@
-package ua.ll7.slot21.spc.dao;
+package ua.ll7.slot21.spc.dao.impl;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -7,52 +7,60 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import ua.ll7.slot21.spc.model.F1;
+import ua.ll7.slot21.spc.dao.IF2Dao;
+import ua.ll7.slot21.spc.model.F2;
 
 import java.util.List;
 
 /**
  * @author Alex Velichko
- *         03.06.14 : 13:58
+ *         03.06.14 : 14:15
  */
 @Repository
-public class F1DaoImpl implements IF1Dao {
+public class F2DaoImpl implements IF2Dao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
 	@Transactional(propagation = Propagation.MANDATORY)
-	public void create(F1 data) {
+	public void create(F2 data) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(data);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.MANDATORY)
-	public List<F1> getAll() {
-		List<F1> result = null;
+	public void update(F2 data) {
 		Session session = sessionFactory.getCurrentSession();
-		result = session.createCriteria(F1.class).list();
+		session.update(data);
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
+	public List<F2> getAll() {
+		List<F2> result = null;
+		Session session = sessionFactory.getCurrentSession();
+		result = session.createCriteria(F2.class).list();
 		return result;
 	}
 
 	@Override
-	public F1 findById(long id) {
+	public F2 findById(long id) {
 
-		F1 result = null;
+		F2 result = null;
 
 		Session session = sessionFactory.getCurrentSession();
 
 		String selectString =
 			"select result " +
-				"from F1 as result " +
+				"from F2 as result " +
 				"where result.id = :id";
 
 		Query query = session.createQuery(selectString);
 		query.setParameter("id", id);
 
-		result = (F1) query.uniqueResult();
+		result = (F2) query.uniqueResult();
 
 		return result;
 	}
