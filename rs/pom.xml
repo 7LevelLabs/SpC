@@ -246,12 +246,6 @@
             <version>${jetty-maven-plugin.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlets</artifactId>
-            <version>${jetty-servlets.version}</version>
-        </dependency>
-
         <!--spring-test-->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -299,13 +293,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
-        </dependency>
-
-        <!--swagger-springmvc-->
-        <dependency>
-            <groupId>com.mangofactory</groupId>
-            <artifactId>swagger-springmvc</artifactId>
-            <version>${swagger-springmvc-version}</version>
         </dependency>
 
     </dependencies>
