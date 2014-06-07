@@ -246,6 +246,12 @@
             <version>${jetty-maven-plugin.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlets</artifactId>
+            <version>${jetty-servlets.version}</version>
+        </dependency>
+
         <!--spring-test-->
         <dependency>
             <groupId>org.springframework</groupId>
