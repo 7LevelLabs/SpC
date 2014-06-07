@@ -139,13 +139,6 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
 
-        <!--Swagger-->
-        <dependency>
-            <groupId>com.wordnik</groupId>
-            <artifactId>swagger-jersey-jaxrs_2.10</artifactId>
-            <version>${swagger-jersey-jaxrs_2.10.version}</version>
-        </dependency>
-
     </dependencies>
 
 </project>
