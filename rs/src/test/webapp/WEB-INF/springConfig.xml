@@ -14,7 +14,6 @@
 
     <context:property-placeholder location="/WEB-INF/test.runtime.properties"/>
 
-
     <context:annotation-config/>
 
     <context:component-scan base-package="ua.ll7.slot21.spc.dao"/>
@@ -50,6 +49,26 @@
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!--Swagger-->
+
+    <!-- Swagger providers -->
+    <bean id="apiDeclarationProvider" class="com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider"/>
+    <bean id="resourceListingProvider" class="com.wordnik.swagger.jaxrs.listing.ResourceListingProvider"/>
+
+    <!-- Swagger API listing resource -->
+    <bean id="swaggerResourceJSON" class="com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON"/>
+
+    <!-- Scans the classes for resources -->
+    <bean id="swaggerConfig" class="com.wordnik.swagger.jaxrs.config.BeanConfig">
+        <property name="resourcePackage" value="ua.ll7.slot21.spc.rs"/>
+        <property name="version" value="0.1"/>
+        <property name="basePath" value="http://localhost:8080/rs"/>
+        <property name="title" value="SpC"/>
+        <property name="description" value="SpC app."/>
+        <property name="contact" value="alex.velichko.kyiv@gmail.com"/>
+        <property name="scan" value="true"/>
     </bean>
 
 </beans>

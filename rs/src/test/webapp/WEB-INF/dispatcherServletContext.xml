@@ -9,6 +9,8 @@
 
     <annotation-driven/>
 
+    <context:annotation-config/>
+
     <beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <beans:property name="messageConverters">
             <beans:list>
@@ -27,12 +29,13 @@
     </beans:bean>
 
     <beans:bean id="jaxbMarshaller"
-          class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+                class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
 
         <beans:property name="classesToBeBound">
             <beans:list>
                 <beans:value>ua.ll7.slot21.spc.util.response.MethodResponse</beans:value>
                 <beans:value>ua.ll7.slot21.spc.util.request.Method2Request</beans:value>
+                <beans:value>ua.ll7.slot21.spc.util.response.FResponse</beans:value>
             </beans:list>
         </beans:property>
 
