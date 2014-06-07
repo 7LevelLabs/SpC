@@ -14,7 +14,7 @@ import java.util.List;
 public abstract class ADao<T extends Serializable> {
 
 	@Autowired
-	SessionFactory sessionFactory;
+	protected SessionFactory sessionFactory;
 
 	private Class<T> clazz;
 
